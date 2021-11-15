@@ -1,0 +1,20 @@
+= observable-parser
+
+This tool wants to ease observable definition lookup by drawing a map of
+all observables in your application.
+
+== Requirements
+As it is based on typescript compiler, your project files must be written in typescript.
+As of now, I mostly tested it with Angular projects (with Ngrx).
+
+== How to use
+
+- First get dependencies:
+`npm install`
+
+- Simple exemple:
+`./observable-parser.js --d ./my-project-directory > tmp.puml`
+
+- Documentation available at:
+`./observable-parser.js --help`
+

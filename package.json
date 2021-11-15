@@ -2,13 +2,20 @@
   "name": "observable-parser",
   "version": "1.0.0",
   "description": "parser to generate plantuml diagrams of pobservables amongst application",
-  "main": "index.js",
+  "main": "observable-parser.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node observable-parser.js",
+    "to-file": "node observable-parser.js > tmp.puml",
+    "test": "npx mocha --enable-source-maps ./test/*.cjs --require ./test/before.cjs --timeout=12000 --check-leaks"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "yargs": "^17.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^9.0.0"
   }
 }
