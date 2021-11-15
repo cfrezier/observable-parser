@@ -1,0 +1,14 @@
+{
+  "name": "observable-parser",
+  "version": "1.0.0",
+  "description": "parser to generate plantuml diagrams of pobservables amongst application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.4.4"
+  }
+}
