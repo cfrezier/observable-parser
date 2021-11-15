@@ -2,7 +2,7 @@ const ts = require('typescript');
 const fs = require('fs');
 const basename = require('./basename');
 
-const generate = (sourceFilename) => {
+const generateAST = (sourceFilename) => {
     return ts.createSourceFile(
         basename(sourceFilename),
         fs.readFileSync(sourceFilename, 'utf8'),
@@ -10,4 +10,4 @@ const generate = (sourceFilename) => {
     );
 }
 
-module.exports = generate;
+module.exports = generateAST;

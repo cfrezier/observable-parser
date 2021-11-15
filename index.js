@@ -1,15 +1,14 @@
 const walk = require('./walk');
-const generate = require('./generate');
+const generateAST = require('./generate');
 const basename = require('./basename');
+const pumlTransform = require('./puml-transform');
 
 walk('../serious-vaccination', (err, results) => {
     if (err) throw err;
 
-    const parsed = results
-        .map(sourceFile => ({ [basename(sourceFile)] : generate(sourceFile)}))
-        .reduce((p, c) => ({...p, ...c}), {});
+    const parsed = results.map(sourceFile => generateAST(sourceFile));
 
-    console.log(parsed);
+    pumlTransform(parsed);
 });
 
 
