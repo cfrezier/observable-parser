@@ -3,7 +3,7 @@ import { filter } from 'rxjs/operators';
 
 export class NoPropertyCombine {
 
-  constructor(anyObservable$: Observable<number>, anyObservable2$: Observable<number>) {
+  constructor() {
     combineLatest([
       anyObservable$,
       anyObservable2$.pipe(filter((a) => a.filterCheck()),

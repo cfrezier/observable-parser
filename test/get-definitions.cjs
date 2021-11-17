@@ -12,6 +12,7 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     SimpleObservable: {
+                        injections: [],
                         defs: [
                             "usecase \"SimpleObservable.obs$\"",
                             "usecase \"SimpleObservable.obs2$\""
@@ -35,6 +36,12 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     NgrxStore: {
+                        "injections": [
+                            {
+                                "name": "store",
+                                "type": "Store<AppState>"
+                            }
+                        ],
                         defs: [
                             "usecase \"NgrxStore.obs$\"",
                             "usecase \"NgrxStore.obs2$\""
@@ -62,6 +69,12 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     NgrxStoreSelectorFn: {
+                        "injections": [
+                            {
+                                "name": "store",
+                                "type": "Store<AppState>"
+                            }
+                        ],
                         defs: [
                             "usecase \"NgrxStoreSelectorFn.obs$\""
                         ],
@@ -86,6 +99,12 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     CombineLatest: {
+                        "injections": [
+                            {
+                                "name": "store",
+                                "type": "Store<AppState>"
+                            }
+                        ],
                         defs: [
                             "usecase \"CombineLatest.obs$\"",
                             "usecase \"CombineLatest.obs2$\"",
@@ -114,6 +133,7 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     NoProperty: {
+                        injections: [],
                         defs: [],
                         links: ["(subscribe) --> (NoProperty.anyObservable$)"]
                     }
@@ -132,6 +152,7 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     NoPropertyCombine: {
+                        injections: [],
                         defs: [],
                         links: [
                             "(subscribe) --> (NoPropertyCombine.anyObservable$)",
@@ -153,6 +174,7 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     OrDefinition: {
+                        injections: [],
                         defs: [
                             "usecase \"OrDefinition.obs$\"",
                             "usecase \"OrDefinition.obs2$\"",
@@ -178,6 +200,7 @@ describe('get-definitions', () => {
             {
                 fromClasses: {
                     CombineLatestWithFn: {
+                        injections: [],
                         defs: [],
                         links: [
                             "(subscribe) --> (this.array.map[item => item.obs$])",
@@ -187,6 +210,34 @@ describe('get-definitions', () => {
                 },
                 fromStore: [],
                 hasSubscribes: true
+            }
+        );
+    });
+
+    it('should detect even when using injection', () => {
+
+        const parsedAST = [generateAST('./test/using-injection.class.ts')];
+
+        expect(getObservablesDefinitions(parsedAST)).to.eql(
+            {
+                fromClasses: {
+                    UsingInjection: {
+                        injections: [
+                            {
+                                "name": "service",
+                                "type": "Service"
+                            }
+                        ],
+                        defs: [
+                            "usecase \"UsingInjection.obs$\""
+                        ],
+                        links: [
+                            "(UsingInjection.obs$) --> (Service.obs1$)"
+                        ]
+                    }
+                },
+                fromStore: [],
+                hasSubscribes: false
             }
         );
     });
