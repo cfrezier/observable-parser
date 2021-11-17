@@ -144,4 +144,49 @@ describe('get-definitions', () => {
             }
         );
     });
+
+    it('should detect conditionals as obs declaration', () => {
+
+        const parsedAST = [generateAST('./test/or-definition.class.ts')];
+
+        expect(getObservablesDefinitions(parsedAST)).to.eql(
+            {
+                fromClasses: {
+                    OrDefinition: {
+                        defs: [
+                            "usecase \"OrDefinition.obs$\"",
+                            "usecase \"OrDefinition.obs2$\"",
+                            "usecase \"OrDefinition.obs3$\""
+                        ],
+                        links: [
+                            "(OrDefinition.obs$) --> (OrDefinition.obs2$)",
+                            "(OrDefinition.obs$) --> (OrDefinition.obs3$)"
+                        ]
+                    }
+                },
+                fromStore: [],
+                hasSubscribes: false
+            }
+        );
+    });
+
+    it('should detect combine latest with fn arg', () => {
+
+        const parsedAST = [generateAST('./test/combine-latest-with-fn.class.ts')];
+
+        expect(getObservablesDefinitions(parsedAST)).to.eql(
+            {
+                fromClasses: {
+                    CombineLatestWithFn: {
+                        defs: [],
+                        links: [
+                            "(subscribe) --> (this.array.map(item => item.obs$))"
+                        ]
+                    }
+                },
+                fromStore: [],
+                hasSubscribes: true
+            }
+        );
+    });
 });
