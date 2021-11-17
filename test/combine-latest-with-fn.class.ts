@@ -7,12 +7,13 @@ export class CombineLatestWithFn {
     combineLatest(this.array.map(item => item.obs$))
           .pipe(take(1))
           .subscribe((loadStatus: Array<boolean>) => {
-            this.updateDisplayedBlocInEtag();
-            this.zoningPlanService.dispatchZoningEndEvent();
-            this.registerReloadListener();
+            somethingUsefull();
+          });
 
-            // Prevent error when all observable blocs has been already resolved during subscription
-            this.loadUnSubscriber$.next(true);
+    combineLatest(this.things.toArray().map(item => item.obs$))
+          .pipe(take(1))
+          .subscribe(() => {
+            somethingUsefull();
           });
   }
 }

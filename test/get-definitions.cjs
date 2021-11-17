@@ -180,7 +180,8 @@ describe('get-definitions', () => {
                     CombineLatestWithFn: {
                         defs: [],
                         links: [
-                            "(subscribe) --> (this.array.map(item => item.obs$))"
+                            "(subscribe) --> (this.array.map[item => item.obs$])",
+                            "(subscribe) --> (this.things.toArray[].map[item => item.obs$])"
                         ]
                     }
                 },
