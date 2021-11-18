@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node observable-parser.js",
     "to-file": "node observable-parser.js > tmp.puml",
-    "test": "npx mocha --enable-source-maps ./test/*.cjs --require ./test/before.cjs --timeout=12000 --check-leaks"
+    "test": "npx mocha --enable-source-maps ./test/*.cjs --require ./test/before.cjs --timeout=12000 --check-leaks",
+    "test:cov": "npx nyc --reporter=html mocha"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^9.0.0"
+    "mocha": "^9.0.0",
+    "nyc": "^15.1.0"
   }
 }
