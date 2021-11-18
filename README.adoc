@@ -1,6 +1,6 @@
 = observable-parser
 
-image:https://circleci.com/gh/cfrezier/observable-parser.svg?style=shield["cfrezier", link="https://circleci.com/gh/cfrezier/observable-parser"] image:https://img.shields.io/codecov/c/github/cfrezier/observable-parser/master.svg?style=flat-square[http://codecov.io/github/cfrezier/observable-parser?branch=master]
+image:https://circleci.com/gh/cfrezier/observable-parser.svg?style=shield["cfrezier", link="https://circleci.com/gh/cfrezier/observable-parser"] image:https://codecov.io/gh/cfrezier/observable-parser/branch/master/graph/badge.svg?token=RCzIeERaUr[https://codecov.io/gh/cfrezier/observable-parser]
 
 This tool wants to ease observable definition lookup by drawing a map of
 all observables in your application.
