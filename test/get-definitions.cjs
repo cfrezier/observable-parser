@@ -18,7 +18,7 @@ describe('get-definitions', () => {
                             "usecase \"SimpleObservable.obs2$\""
                         ],
                         links: [
-                            "(SimpleObservable.obs$) --> (SimpleObservable.obs2$)"
+                            "(SimpleObservable.obs$) -d-> (SimpleObservable.obs2$)"
                         ]
                     }
                 },
@@ -47,8 +47,8 @@ describe('get-definitions', () => {
                             "usecase \"NgrxStore.obs2$\""
                         ],
                         links: [
-                            "(NgrxStore.obs$) --> (Store[aNgrxSelector])",
-                            "(NgrxStore.obs2$) --> (NgrxStore.step$)"
+                            "(NgrxStore.obs$) -d---> (Store[aNgrxSelector])",
+                            "(NgrxStore.obs2$) -d-> (NgrxStore.step$)"
                         ]
                     }
                 },
@@ -79,7 +79,7 @@ describe('get-definitions', () => {
                             "usecase \"NgrxStoreSelectorFn.obs$\""
                         ],
                         links: [
-                            "(NgrxStoreSelectorFn.obs$) --> (Store[aNgrxSelectorFn])"
+                            "(NgrxStoreSelectorFn.obs$) -d---> (Store[aNgrxSelectorFn])"
                         ]
                     }
                 },
@@ -111,9 +111,9 @@ describe('get-definitions', () => {
                             "usecase \"CombineLatest.obs3$\""
                         ],
                         links: [
-                            "(CombineLatest.obs3$) --> (CombineLatest.obs$)",
-                            "(CombineLatest.obs3$) --> (Store[aNgrxSelector])",
-                            "(CombineLatest.obs3$) --> (CombineLatest.obs2$)"
+                            "(CombineLatest.obs3$) -d-> (CombineLatest.obs$)",
+                            "(CombineLatest.obs3$) -d-----> (Store[aNgrxSelector])",
+                            "(CombineLatest.obs3$) -d-> (CombineLatest.obs2$)"
                         ]
                     }
                 },
@@ -135,7 +135,7 @@ describe('get-definitions', () => {
                     NoProperty: {
                         injections: [],
                         defs: [],
-                        links: ["(subscribe) --> (NoProperty.anyObservable$)"]
+                        links: ["(subscribe) -u-------> (NoProperty.anyObservable$)"]
                     }
                 },
                 fromStore: [],
@@ -155,8 +155,8 @@ describe('get-definitions', () => {
                         injections: [],
                         defs: [],
                         links: [
-                            "(subscribe) --> (NoPropertyCombine.anyObservable$)",
-                            "(subscribe) --> (NoPropertyCombine.anyObservable2$)"
+                            "(subscribe) -u-------> (NoPropertyCombine.anyObservable$)",
+                            "(subscribe) -u-------> (NoPropertyCombine.anyObservable2$)"
                         ]
                     }
                 },
@@ -181,8 +181,8 @@ describe('get-definitions', () => {
                             "usecase \"OrDefinition.obs3$\""
                         ],
                         links: [
-                            "(OrDefinition.obs$) --> (OrDefinition.obs2$)",
-                            "(OrDefinition.obs$) --> (OrDefinition.obs3$)"
+                            "(OrDefinition.obs$) -d-> (OrDefinition.obs2$)",
+                            "(OrDefinition.obs$) -d-> (OrDefinition.obs3$)"
                         ]
                     }
                 },
@@ -203,8 +203,8 @@ describe('get-definitions', () => {
                         injections: [],
                         defs: [],
                         links: [
-                            "(subscribe) --> (this.array.map[item => item.obs$])",
-                            "(subscribe) --> (this.things.toArray[].map[item => item.obs$])"
+                            "(subscribe) -u-------> (this.array.map[item=>item.obs$])",
+                            "(subscribe) -u-------> (this.things.toArray[].map[item=>item.obs$])"
                         ]
                     }
                 },
@@ -232,7 +232,7 @@ describe('get-definitions', () => {
                             "usecase \"UsingInjection.obs$\""
                         ],
                         links: [
-                            "(UsingInjection.obs$) --> (Service.obs1$)"
+                            "(UsingInjection.obs$) -d---> (Service.obs1$)"
                         ]
                     }
                 },
