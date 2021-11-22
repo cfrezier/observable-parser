@@ -13,7 +13,11 @@ walk(options.rootDirectory, options, (err, results) => {
 
     const definitions = getObservablesDefinitions(parsed);
 
-    pumlDisplay(definitions, options);
+    const lines = pumlDisplay(definitions, options);
+
+    lines.forEach(line => {
+        console.log(line);
+    });
 });
 
 
